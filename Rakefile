@@ -1,6 +1,7 @@
 # require "bundler/gem_tasks"
 # require "rspec/core/rake_task"
-
+ENV['gem_push'] = 'off'
+#
 load "Rakefile.base"
 
 # RSpec::Core::RakeTask.new(:spec)
