@@ -34,10 +34,10 @@ end
 
 task :prepare_release do
   Rake::Task['guard_on_master_branch'].invoke
-  Rake::Task['release:guard_clean'].invoke
-  Rake::Task['build'].invoke
-  Rake::Task['release:source_control_push'].invoke
   Rake::Task['edit_changelog'].invoke
+  Rake::Task['release:guard_clean'].invoke
+  #Rake::Task['build'].invoke
+  Rake::Task['release:source_control_push'].invoke
 end
 
 task(:release).clear
