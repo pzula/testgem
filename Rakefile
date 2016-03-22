@@ -31,9 +31,12 @@ task :edit_changelog do
     abort "git-changelog isn't found. Install it with `brew install git-extras`"
   end
 end
+task :git_commit do
+  sh "git commit --allow-empty -a -m 'Release notes'"
+end
 
 release_prereqs = Rake::Task[:release].prerequisite_tasks
-typekit_tasks =  [:guard_on_master_branch, :edit_changelog]
+typekit_tasks =  [:guard_on_master_branch, :edit_changelog, :git_commit]
 
 task(:release).clear_prerequisites
 
