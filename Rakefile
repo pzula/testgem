@@ -32,7 +32,12 @@ task :edit_changelog do
   end
 end
 
-Rake::Task[:release].enhance [:guard_on_master_branch, :edit_changelog]
+release_prereqs = Rake::Task[:release].prerequisite_tasks
+typekit_tasks =  [:guard_on_master_branch, :edit_changelog]
+
+task(:release).clear_prerequisites
+
+Rake::Task[:release].enhance typekit_tasks + release_prereqs
 
 #with_fixed_editor
   #editor = ENV['EDITOR'] || ""
