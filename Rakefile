@@ -3,7 +3,7 @@ ENV['gem_push'] = 'off'
 
 def with_fixed_editor
   editor = ENV['EDITOR'] || ""
-  abort "You must set an EDITOR to edit the changelog" if editor.empty?
+  fail "You must set an EDITOR to edit the changelog" if editor.empty?
   swaps = {
     "mate" => "mate -w",
     "subl" => "subl -w",
@@ -27,7 +27,7 @@ task :edit_changelog do
       sh "git-changelog"
     }
   else
-    abort "git-changelog isn't found. Install it with `brew install git-extras`"
+    fail "git-changelog isn't found. Install it with `brew install git-extras`"
   end
 end
 
