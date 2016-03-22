@@ -18,7 +18,7 @@ def with_fixed_editor
 end
 task :guard_on_master_branch do
   unless `git branch` =~ /^\* master$/
-    abort "You must be on the master branch to release."
+    fail "You must be on the master branch to release."
   end
 end
 task :edit_changelog do
