@@ -32,14 +32,16 @@ task :edit_changelog do
   end
 end
 
+# Invoke the rake tasks in the proper order for our releases
 task :prepare_release do
   Rake::Task['guard_on_master_branch'].invoke
   Rake::Task['release:guard_clean'].invoke
   Rake::Task['edit_changelog'].invoke
-  #Rake::Task['build'].invoke
+  Rake::Task['build'].invoke
   Rake::Task['release:source_control_push'].invoke
 end
 
+# Override the `rake release` provided by Bundler so we can change the order
 task(:release).clear
 
 desc "Add to the changelog and release the gem"
