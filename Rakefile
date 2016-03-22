@@ -32,7 +32,5 @@ task :edit_changelog do
 end
 
 
-task :release => [:guard_on_master_branch, :edit_changelog] do
-  Rake::Task["release"].execute
-end
+task :release => [:guard_on_master_branch, :edit_changelog]
 
